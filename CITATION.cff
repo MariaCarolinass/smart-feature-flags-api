@@ -1,0 +1,15 @@
+cff-version: 1.2.0
+message: "Se você usar este software, por favor cite-o."
+title: "Smart Feature Flags API"
+type: software
+repository-code: "https://github.com/MariaCarolinass/adaptiveflags"
+license: "BSD-3-Clause"
+keywords:
+  - "feature flags"
+  - "fastapi"
+  - "machine learning"
+  - "python"
+authors:
+  - name: "Maria Carolina de Sousa Soares"
+    email: "mcarolinasoares0@gmail.com"
+    url: "https://github.com/MariaCarolinass"
