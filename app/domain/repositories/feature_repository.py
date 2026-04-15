@@ -20,3 +20,11 @@ class FeatureRepository(ABC):
     @abstractmethod
     def get_by_key(self, key: str) -> Feature | None:
         raise NotImplementedError
+
+    @abstractmethod
+    def update(self, feature: Feature) -> Feature:
+        raise NotImplementedError
+
+    @abstractmethod
+    def delete(self, feature_id: UUID) -> bool:
+        raise NotImplementedError
