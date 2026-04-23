@@ -5,3 +5,7 @@ pydantic-settings
 sqlalchemy
 pytest
 httpx
+joblib
+pandas
+scikit-learn
+python-multipart
