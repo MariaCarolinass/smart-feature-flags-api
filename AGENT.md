@@ -9,7 +9,7 @@
 ## Code organization
 
 * `app/domain/`: entities, contracts, services.
-* `app/infrastructure/`: `models.py`, `db.py`, SQLite repositories.
+* `app/infrastructure/`: `db/models.py`, `db/db.py`, SQLite repositories.
 * `app/api/` + `app/schemas/`: HTTP routes + request/response schemas.
 * `app/core/`: config, logging, exceptions.
 
@@ -37,7 +37,7 @@
 * Single persistence layer: **SQLAlchemy + SQLite**.
 * Default URL: `sqlite:///./db.sqlite3` (via `DATABASE_URL`).
 * `init_db()` runs on **lifespan startup** in `app/main.py`.
-* UUID stored as `String(36)`; dictionary fields as `JSON`.
+* Entity IDs use integer autoincrement; dictionary fields stored as `JSON`.
 
 ## Security and runtime
 
