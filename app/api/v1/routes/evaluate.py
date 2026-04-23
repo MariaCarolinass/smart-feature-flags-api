@@ -9,15 +9,25 @@ router = APIRouter(prefix="/evaluate", tags=["evaluation"])
 logger = get_logger(__name__)
 
 
-@router.post("", response_model=EvaluateResponse)
+@router.post(
+    "",
+    response_model=EvaluateResponse,
+    summary="Evaluate feature for user",
+    description=(
+        "Evaluates whether a feature should be enabled for a user.\n\n"
+        "- Tries model score when `ml_enabled=true` and model status is `ready`\n"
+        "- Falls back to deterministic rollout when scoring is unavailable"
+    ),
+    response_description="Feature evaluation result.",
+)
 def evaluate(request: EvaluateRequest):
     try:
         return evaluation_service.evaluate(
             feature_key=request.feature_key,
-            user=request.user,
+            user=request.user.model_dump(),
         )
     except AppError as e:
         raise to_http_exception(e)
     except Exception as e:
-        logger.exception("Erro ao avaliar feature")
+        logger.exception("Failed to evaluate feature")
         raise HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR, detail="Internal server error.")
