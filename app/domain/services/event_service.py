@@ -1,4 +1,3 @@
-from uuid import uuid4, UUID
 from datetime import datetime
 
 from app.core.exceptions import NotFoundError
@@ -19,7 +18,7 @@ class EventService:
         properties: dict[str, str | int | float | bool | None],
     ) -> Event:
         event = Event(
-            id=uuid4(),
+            id=None,
             user_id=user_id,
             feature_key=feature_key,
             event_type=event_type,
@@ -40,12 +39,12 @@ class EventService:
             event_type=event_type,
         )
 
-    def get_event_by_id(self, event_id: UUID) -> Event | None:
+    def get_event_by_id(self, event_id: int) -> Event | None:
         return self.event_repository.get_by_id(event_id)
 
     def update_event(
         self,
-        event_id: UUID,
+        event_id: int,
         user_id: str,
         feature_key: str,
         event_type: str,
@@ -66,7 +65,7 @@ class EventService:
         )
         return self.event_repository.update(updated)
 
-    def delete_event(self, event_id: UUID) -> None:
+    def delete_event(self, event_id: int) -> None:
         deleted = self.event_repository.delete(event_id)
         if not deleted:
             raise NotFoundError("Event not found.")

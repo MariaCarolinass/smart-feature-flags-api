@@ -1,5 +1,4 @@
 from datetime import datetime, timezone
-from uuid import uuid4, UUID
 
 from app.core.exceptions import ConflictError, NotFoundError
 from app.domain.entities.feature import Feature
@@ -26,7 +25,7 @@ class FeatureService:
         now = datetime.now(timezone.utc)
 
         feature = Feature(
-            id=uuid4(),
+            id=None,
             name=name,
             key=key,
             description=description,
@@ -42,12 +41,12 @@ class FeatureService:
     def list_features(self) -> list[Feature]:
         return self.feature_repository.list()
 
-    def get_feature_by_id(self, feature_id: UUID) -> Feature | None:
+    def get_feature_by_id(self, feature_id: int) -> Feature | None:
         return self.feature_repository.get_by_id(feature_id)
 
     def update_feature(
         self,
-        feature_id: UUID,
+        feature_id: int,
         name: str,
         key: str,
         description: str | None,
@@ -76,7 +75,7 @@ class FeatureService:
         )
         return self.feature_repository.update(updated)
 
-    def delete_feature(self, feature_id: UUID) -> None:
+    def delete_feature(self, feature_id: int) -> None:
         deleted = self.feature_repository.delete(feature_id)
         if not deleted:
             raise NotFoundError("Feature not found.")
