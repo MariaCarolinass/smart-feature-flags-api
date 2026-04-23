@@ -1,5 +1,4 @@
 from abc import ABC, abstractmethod
-from uuid import UUID
 
 from app.domain.entities.feature import Feature
 
@@ -14,7 +13,7 @@ class FeatureRepository(ABC):
         raise NotImplementedError
 
     @abstractmethod
-    def get_by_id(self, feature_id: UUID) -> Feature | None:
+    def get_by_id(self, feature_id: int) -> Feature | None:
         raise NotImplementedError
 
     @abstractmethod
@@ -26,5 +25,5 @@ class FeatureRepository(ABC):
         raise NotImplementedError
 
     @abstractmethod
-    def delete(self, feature_id: UUID) -> bool:
+    def delete(self, feature_id: int) -> bool:
         raise NotImplementedError

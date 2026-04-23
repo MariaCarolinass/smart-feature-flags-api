@@ -1,11 +1,10 @@
 from dataclasses import dataclass
 from datetime import datetime
-from uuid import UUID
 
 
 @dataclass(slots=True)
 class Feature:
-    id: UUID
+    id: int | None
     name: str
     key: str
     description: str | None

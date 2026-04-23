@@ -9,3 +9,4 @@ class ModelMetadata:
     model_version: str | None
     trained_at: datetime | None
     metrics: dict[str, float] | None
+    artifact_path: str | None = None

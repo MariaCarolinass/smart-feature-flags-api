@@ -1,7 +1,5 @@
 from abc import ABC, abstractmethod
 
-from uuid import UUID
-
 from app.domain.entities.event import Event
 
 
@@ -20,7 +18,7 @@ class EventRepository(ABC):
         raise NotImplementedError
 
     @abstractmethod
-    def get_by_id(self, event_id: UUID) -> Event | None:
+    def get_by_id(self, event_id: int) -> Event | None:
         raise NotImplementedError
 
     @abstractmethod
@@ -28,5 +26,5 @@ class EventRepository(ABC):
         raise NotImplementedError
 
     @abstractmethod
-    def delete(self, event_id: UUID) -> bool:
+    def delete(self, event_id: int) -> bool:
         raise NotImplementedError

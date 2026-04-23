@@ -1,11 +1,10 @@
 from dataclasses import dataclass
 from datetime import datetime
-from uuid import UUID
 
 
 @dataclass(slots=True)
 class Event:
-    id: UUID
+    id: int | None
     user_id: str
     feature_key: str
     event_type: str
